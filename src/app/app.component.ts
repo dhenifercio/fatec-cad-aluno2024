@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Student } from './student';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'cad-aluno';
+
+ 
 }

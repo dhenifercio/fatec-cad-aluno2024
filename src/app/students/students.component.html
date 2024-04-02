@@ -4,15 +4,6 @@
       <div class="col-7 m-auto">
         <h1 class="text-center">Cadastro de Alunos</h1>
         <form [formGroup]="formGroupStudent">
-          <div class="mb-3">
-            <label for="Matricula" class="form-label">Matricula</label>
-            <input
-             type="text" 
-             class="form-control" 
-             id="Matricula" 
-             formControlName="id"
-             />
-            </div>
             <div class="mb-3">
               <label for="Nome" class="form-label">Nome</label>
               <input
@@ -46,6 +37,7 @@
                 <th scope="col">Matricula</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Curso</th>
+                <th scope="d-flex justify-content-end" scope="col">Opções</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +45,12 @@
                 <th scope="row">{{student.id}}</th>
                 <td>{{student.name}}</td>
                 <td>{{student.course}}</td>
+                <td>
+                  <button class= "btn btn-danger me-2" (click)="delete(student)">
+                    Remover</button>
+                    
+                  <button class= "btn btn-primary" (click)="edit(student)">Alterar</button>
+                </td>
               </tr>
             </tbody>
           </table>
