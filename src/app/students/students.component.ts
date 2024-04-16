@@ -13,7 +13,6 @@ export class StudentsComponent implements OnInit{
 
   formGroupStudent : FormGroup;
   isEditing: boolean=false;
-  submited: boolean =false
   
   constructor(private formBuilder: FormBuilder,
     private service: StudentService){
@@ -37,14 +36,13 @@ export class StudentsComponent implements OnInit{
   }
   
    save(){
-    this.submited = true;
     if(this.formGroupStudent.valid)
     if(this.isEditing){
       this.service.update(this.formGroupStudent.value).subscribe({
         next: () => {
           this.loadStudents();
           this.isEditing = false
-          this.submited = false;
+          this.formGroupStudent.reset()
         }
       })
     }
@@ -52,11 +50,12 @@ export class StudentsComponent implements OnInit{
       this.service.save(this.formGroupStudent.value).subscribe({
         next: data => {
           this.students.push(data);
-        this.submited=false;
+        this.formGroupStudent.reset()
         }
+        
       });
     }
-    this.formGroupStudent.reset()
+   
       
 }
 
